@@ -9,6 +9,9 @@
 '
 CLS
 init
+test_field
+test_master
+test_draw_master
 ~INP(2)
 uninit
 END
@@ -33,12 +36,13 @@ PROCEDURE test_master
   RANDOMIZE
   FOR i%=0 TO 6
     master|(i%)=INT(RND(0)*6)+1
-    PRINT master|(i%);",";
+    '    PRINT master|(i%);",";
   NEXT i%
 RETURN
 PROCEDURE test_draw_master
   FOR c%=1 TO 7
     DEFFILL master|(c%)
+    COLOR 1
     PCIRCLE c%*14,199-14,6
   NEXT c%
 RETURN
