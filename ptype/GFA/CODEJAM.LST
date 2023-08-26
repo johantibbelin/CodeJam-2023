@@ -41,8 +41,7 @@ PROCEDURE test_master
 RETURN
 PROCEDURE test_draw_master
   FOR c%=1 TO 7
-    DEFFILL master|(c%)
-    COLOR 1
+    DEFFILL master|(c%-1)
     PCIRCLE c%*14,199-14,6
   NEXT c%
 RETURN
