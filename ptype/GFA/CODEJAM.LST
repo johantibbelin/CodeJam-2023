@@ -1,0 +1,44 @@
+' ***********************************
+' * CodeJam 2023 (prototype)        *
+' *---------------------------------*
+' * Written by: Johan Tibbelin      *
+' *             (sjfroos)           *
+' *                                 *
+' ***********************************
+'
+'
+CLS
+init
+~INP(2)
+uninit
+END
+PROCEDURE init
+  DIM field|(7,12),master|(7),correct|(7,12)
+  SETCOLOR 0,&H0
+  SETCOLOR 15,&HFFF
+RETURN
+PROCEDURE uninit
+  SETCOLOR 0,&HFFF
+  SETCOLOR 15,&H0
+RETURN
+PROCEDURE test_field
+  FOR r%=1 TO 12
+    FOR c%=1 TO 7
+      CIRCLE c%*14,r%*14,6
+    NEXT c%
+  NEXT r%
+RETURN
+PROCEDURE test_master
+  ' random
+  RANDOMIZE
+  FOR i%=0 TO 6
+    master|(i%)=INT(RND(0)*6)+1
+    PRINT master|(i%);",";
+  NEXT i%
+RETURN
+PROCEDURE test_draw_master
+  FOR c%=1 TO 7
+    DEFFILL master|(c%)
+    PCIRCLE c%*14,199-14,6
+  NEXT c%
+RETURN
