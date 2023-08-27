@@ -45,3 +45,7 @@ PROCEDURE test_draw_master
     PCIRCLE c%*14,199-14,6
   NEXT c%
 RETURN
+PROCEDURE compare
+RETURN
+PROCEDURE turn
+RETURN
