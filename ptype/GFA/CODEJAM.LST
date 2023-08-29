@@ -15,12 +15,19 @@ INLINE asm%,2048
 '
 '
 CLS
+' low
 init
+DIM regs%(16)
+ARRAYFILL regs%(),0
+' RCALL asm%,regs%()
+' ~INP(2)
 test_field
 test_master
 test_draw_master
+color_boxes
 ~INP(2)
 uninit
+' medium
 END
 PROCEDURE init
   DIM field|(7,12),master|(7),correct|(7,12)
@@ -33,7 +40,7 @@ PROCEDURE uninit
 RETURN
 PROCEDURE test_field
   FOR r%=1 TO 12
-    FOR c%=1 TO 7
+    FOR c%=1 TO 4
       CIRCLE c%*14,r%*14,6
     NEXT c%
   NEXT r%
@@ -47,7 +54,7 @@ PROCEDURE test_master
   NEXT i%
 RETURN
 PROCEDURE test_draw_master
-  FOR c%=1 TO 7
+  FOR c%=1 TO 4
     DEFFILL master|(c%-1)
     PCIRCLE c%*14,199-14,6
   NEXT c%
@@ -55,4 +62,22 @@ RETURN
 PROCEDURE compare
 RETURN
 PROCEDURE turn
+RETURN
+PROCEDURE low
+  LOCAL scr%
+  scr%=XBIOS(2)
+  ~XBIOS(5,L:scr%,L:scr%,0)
+  CLS
+RETURN
+PROCEDURE medium
+  LOCAL scr%
+  scr%=XBIOS(2)
+  ~XBIOS(5,L:scr%,L:scr%,1)
+  CLS
+RETURN
+PROCEDURE color_boxes
+  FOR c%=0 TO 6
+    DEFFILL c%
+    PBOX 90+30*c%,175,90+30*c%+25,180
+  NEXT c%
 RETURN
