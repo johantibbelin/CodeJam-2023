@@ -33,6 +33,7 @@ PROCEDURE init
   DIM field|(7,12),master|(7),correct|(7,12)
   SETCOLOR 0,&H0
   SETCOLOR 15,&HFFF
+  SHOWM
 RETURN
 PROCEDURE uninit
   SETCOLOR 0,&HFFF
@@ -81,3 +82,19 @@ PROCEDURE color_boxes
     PBOX 90+30*c%,175,90+30*c%+25,180
   NEXT c%
 RETURN
+PROCEDURE get_color
+  SHOWM
+  REPEAT
+    IF MOUSEK=1
+      IF MOUSEY>=175 AND MOUSEY<=180
+        x%=MOUSEX
+        x%=x%-90
+        IF x%<0
+          GOTO nc
+        ENDIF
+        c%=x% DIV 30
+        PRINT AT(5,5);c%
+      nc:
+      ENDIF
+    UNTIL MOUSEK=2
+  RETURN
