@@ -77,8 +77,8 @@ PROCEDURE medium
   CLS
 RETURN
 PROCEDURE color_boxes
-  FOR c%=0 TO 6
-    DEFFILL c%
+  FOR c%=0 TO 5
+    DEFFILL c%+2
     PBOX 90+30*c%,175,90+30*c%+25,180
   NEXT c%
 RETURN
@@ -96,5 +96,12 @@ PROCEDURE get_color
         PRINT AT(5,5);c%
       nc:
       ENDIF
-    UNTIL MOUSEK=2
-  RETURN
+    ENDIF
+  UNTIL MOUSEK=2
+RETURN
+' ****************************************
+' Tests
+'
+'
+PROCEDURE unit_tests
+RETURN
